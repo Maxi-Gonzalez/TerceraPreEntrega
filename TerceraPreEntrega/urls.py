@@ -3,5 +3,5 @@ from TerceraPreEntrega import views
 
 urlpatterns = [
     path('',views.inicio),
-    path('cursos',views.cursos),
+    path('cafes',views.cafes),
 ]
