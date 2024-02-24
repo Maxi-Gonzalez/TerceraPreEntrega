@@ -15,3 +15,6 @@ def products(request):
 
 def about(request):
     return render(request, "TerceraPreEntrega/about.html")
+
+def padre(request):
+    return render(request,"TerceraPreEntrega/padre.html")
