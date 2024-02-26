@@ -2,7 +2,7 @@ from django.shortcuts import render
 from TerceraPreEntrega.models import Cafe
 
 # Create your views here.
-def inicio (request):
+def inicio(request):
     return render(request,"TerceraPreEntrega/index.html")
 
 def cafes(request):
@@ -16,5 +16,5 @@ def products(request):
 def about(request):
     return render(request, "TerceraPreEntrega/about.html")
 
-def padre(request):
-    return render(request,"TerceraPreEntrega/padre.html")
+def curso_Form(request):
+    return render(request, "TerceraPreEntrega/cursoFormulario.html")
