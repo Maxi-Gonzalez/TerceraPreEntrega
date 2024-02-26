@@ -16,5 +16,14 @@ def products(request):
 def about(request):
     return render(request, "TerceraPreEntrega/about.html")
 
-def curso_Form(request):
-    return render(request, "TerceraPreEntrega/cursoFormulario.html")
+def cafe_Form(request):
+
+    if request.method == 'POST':
+        
+        curso =  Cafe(request.post['nombre'],(request.post['precio']))
+
+        curso.save()
+
+        return render(request, "TerceraPreEntrega/inicio.html")
+    
+    return render(request, "TerceraPreEntrega/cafeFormulario.html")
