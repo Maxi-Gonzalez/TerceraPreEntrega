@@ -20,10 +20,10 @@ def cafe_Form(request):
 
     if request.method == 'POST':
         
-        curso =  Cafe(request.post['nombre'],(request.post['precio']))
+        cafe =  Cafe(nombre=request.POST['nombre'],precio=request.POST['precio'])
 
-        curso.save()
+        cafe.save()
 
-        return render(request, "TerceraPreEntrega/inicio.html")
+        return render(request, "TerceraPreEntrega/index.html")
     
     return render(request, "TerceraPreEntrega/cafeFormulario.html")
