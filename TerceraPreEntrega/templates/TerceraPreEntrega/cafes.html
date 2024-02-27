@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
+{% extends "TerceraPreEntrega/padre.html" %} {%load static %} 
+{% block contenidoIndex %}
   <body>
     <h1>Cafes</h1>
     <ul>
@@ -12,5 +7,23 @@
       <li>{{cafe.nombre}}</li>
       {%endfor%}
     </ul>
+
+    <div class="about-heading-content">
+      <div class="row">
+        <div class="col-xl-9 col-lg-10 mx-auto">
+          <div class="bg-faded rounded p-5">
+            <h2 class="section-heading mb-4">
+              <span class="section-heading-upper">Cafes</span>
+              <span class="section-heading-lower">Tipos de Cafe que disponemos</span>
+            </h2>
+            <ul>
+              {%for cafe in cafes%}
+              <li>{{cafe.nombre}}</li>
+              {%endfor%}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
-</html>
+  {% endblock contenidoIndex%}
