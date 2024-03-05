@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% extends "TerceraPreEntrega/padre.html" %} {%load static %} 
+{% block contenidoIndex %}
+
+
+    <div class="intro-text left-0 text-left bg-faded p-5 rounded">
+      <h2 class="section-heading mb-4">
+        <span class="section-heading-upper">Formulario</span>
+        <span class="section-heading-lower">Cafes</span>
+      </h2>
+      <form method="POST">
+        {% csrf_token %}
+        <table>
+            {{formulario.as_table}}
+        </table>
+        <input type="submit" value="Buscar">
+      </form>
+      <ul>
+        {% for cafe in cafes%}
+          <li> {{cafe.nombre}}</li>
+        {% endfor %}
+      </ul>
+
+    </div>
+{% endblock contenidoIndex%}

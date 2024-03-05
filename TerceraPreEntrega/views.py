@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from TerceraPreEntrega.models import Cafe
+from TerceraPreEntrega.forms import CafeFormulario, Buscar
 
 # Create your views here.
 def inicio(request):
@@ -27,3 +28,33 @@ def cafe_Form(request):
         return render(request, "TerceraPreEntrega/index.html")
     
     return render(request, "TerceraPreEntrega/cafeFormulario.html")
+
+
+def cafe_form2(request):
+ 
+    if request.method == "POST":
+ 
+        miFormulario = CafeFormulario(request.POST) # Aqui me llega la informacion del html
+        print(miFormulario)
+
+        if miFormulario.is_valid:
+            informacion = miFormulario.cleaned_data
+            curso = Cafe(nombre=informacion["nombre"], camada=informacion["precio"])
+            curso.save()
+        return render(request, "TerceraPreEntrega/index.html")
+    else:
+            miFormulario = CafeFormulario()
+ 
+    return render(request, "TerceraPreEntrega/cafeFormulario2.html", {"formulario": miFormulario})
+
+def buscar(request):
+    if request.method == "POST":
+        miFormulario = Buscar(request.POST)
+        if miFormulario.is_valid():
+            info = miFormulario.cleaned_data
+            cafe =Cafe.objects.filter(nombre__icontains=info["nombre"])
+            return render(request,"TerceraPreEntrega/buscar.html",{"cafes":cafe} )
+    else:
+        miFormulario = Buscar()
+ 
+    return render(request, "TerceraPreEntrega/buscar.html", {"formulario": miFormulario})
