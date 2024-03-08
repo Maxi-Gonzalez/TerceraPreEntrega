@@ -1,6 +1,11 @@
 from django.shortcuts import render
 from TerceraPreEntrega.models import Cafe
 from TerceraPreEntrega.forms import CafeFormulario, Buscar
+from django.views.generic import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+
+
 
 # Create your views here.
 def inicio(request):
@@ -58,3 +63,12 @@ def buscar(request):
         miFormulario = Buscar()
  
     return render(request, "TerceraPreEntrega/buscar.html", {"formulario": miFormulario})
+
+class CafeListView(ListView):
+    model = Cafe
+    template_name="TerceraPreEntrega/clase_list.html"
+
+class CafeCreateView(CreateView):
+    model= Cafe
+    success_url="/TerceraPreEntrega/"
+    fields = ["nombre","precio"]
